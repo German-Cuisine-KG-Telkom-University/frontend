@@ -1,0 +1,5 @@
+<div class="chat-container">
+  <div *ngFor="let msg of messages" class="message" [ngClass]="msg.sender">
+    <strong>{{ msg.sender === 'user' ? 'You' : 'AI' }}:</strong> {{ msg.text }}
+  </div>
+</div>
