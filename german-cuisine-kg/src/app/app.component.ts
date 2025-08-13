@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { Message } from './models/message';
 import { ChatInputComponent } from "./components/chat-input/chat-input.component";
 import { ChatOverviewComponent } from "./components/chat-overview/chat-overview.component";
+import { ChatService } from './services/chat.service';
 
 
 @Component({
@@ -16,12 +17,11 @@ export class AppComponent {
   title = 'german-cuisine-kg';
   messages: Message[] = [];
 
-  handleSendMessage(text: string) {
-    this.messages.push({ sender: 'user', text });
+  constructor(private chatService: ChatService) {}
 
-    // Simulated AI response
-    setTimeout(() => {
-      this.messages.push({ sender: 'ai', text: 'This is a mock AI reply.' });
-    }, 500);
+  handleSendMessage(userText: string) {
+    this.chatService.sendMessage(userText).subscribe((response: Message) => {
+      this.messages.push(response);
+    });
   }
 }
