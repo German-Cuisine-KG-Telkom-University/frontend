@@ -3,7 +3,7 @@
   --msger-bg: #edeb70;
   --border: 2px solid #ddd;
   --left-msg-bg: #ececec;
-  --right-msg-bg: #579ffb;
+  --right-msg-bg: #8BD3E6;
 }
 
 html {
@@ -30,11 +30,25 @@ body {
   background-image: var(--body-bg);
   font-family: Helvetica, sans-serif;
 }
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  padding: 8px 20px;
+  background-color: #F6EB61; /* background */
+  border-radius: 12px; /* softened edges */
+  box-shadow: 0 3px 10px rgba(0,0,0,0.25); /* soft shadow */
+  width: fit-content;
+}
+
+
 .page-title {
     text-align: center;
-    font-size: 2rem;          /* makes it big and title-like */
-    color: white;             /* white text */
-    -webkit-text-stroke: 0.5px black; /* black contour */
+    font-size: 2rem;          
+    color: white;             
+    -webkit-text-stroke: 0.5px black; 
     
     margin: 20px 0;
 }
@@ -117,14 +131,14 @@ body {
   max-width: 450px;
   padding: 15px;
   border-radius: 15px;
-  background: #579ffb;
+  background: #8BD3E6;
 }
 
 .right-msg {
   flex-direction: row-reverse;
 }
 .right-msg .msg-bubble {
-  background: #c42020 !important;
+  background: #FF6D6A !important;
   color: #e8dfdf;
   border-bottom-right-radius: 0;
 }

@@ -3,39 +3,30 @@
   
 
   <main class="msger-chat">
-    <h1 class="page-title">German Food KG</h1>
-    <div class="msg left-msg">
-     
-  
-
-      <div class="msg-bubble">
-        <div class="msg-info">
-          <div class="msg-info-name">German Cuisine KG</div>
-        </div>
-
-        <div class="msg-text">
-          Hi, welcome to SimpleChat! Go ahead and send me a message. 😄
-        </div>
-      </div>
+     <div class="title-container">
+        <h1 class="page-title">German Food KG</h1>
     </div>
-
-    <div class="msg right-msg">
-      
-
+    <div *ngFor="let msg of messages" class="msg" [ngClass]="msg.sender + '-msg'">
       <div class="msg-bubble">
         <div class="msg-info">
-          <div class="msg-info-name">User</div>
+          <div class="msg-info-name">
+            {{ msg.sender === 'left' ? 'User' : 'Cuisine Expert' }}
+          </div>
         </div>
-
-        <div class="msg-text">
-         You're pretty good
-        </div>
+        <div class="msg-text">{{ msg.text }}</div>
       </div>
     </div>
   </main>
 
-  <form class="msger-inputarea">
-    <input type="text" class="msger-input" placeholder="Enter your question about German Food & Drink here...">
+    <!-- Input form -->
+  <form class="msger-inputarea" (ngSubmit)="sendMessage()">
+    <input 
+      type="text" 
+      class="msger-input" 
+      placeholder="Enter your question about German Food & Drink here..."
+      [(ngModel)]="currentInput"
+      name="messageInput"
+    >
     <button type="submit" class="msger-send-btn">Send</button>
   </form>
 </section>

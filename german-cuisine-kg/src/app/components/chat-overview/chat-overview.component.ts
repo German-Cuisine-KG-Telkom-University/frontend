@@ -3,13 +3,36 @@ import { Message } from '../../models/message';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-chat-overview',
   templateUrl: './chat-overview.component.html',
   styleUrls: ['./chat-overview.component.css'],
-  imports: [CommonModule]
+  imports: [CommonModule, FormsModule]
 })
 export class ChatOverviewComponent {
   @Input() messages: Message[] = [];
+  currentInput: string = '';
+
+  sendMessage() {
+    if (!this.currentInput.trim()) return;
+
+    // Push user message
+    this.messages.push({
+      sender: 'left',
+      text: this.currentInput
+    });
+
+    // Clear input field
+    this.currentInput = '';
+
+    // Optionally: simulate AI reply
+    setTimeout(() => {
+      this.messages.push({
+        sender: 'right',
+        text: 'Thanks for your question! 🍽️'
+      });
+    }, 800);
+  }
 }

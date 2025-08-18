@@ -1,4 +1,4 @@
 export interface Message {
-  sender: 'user' | 'ai';
+  sender: 'left' | 'right';
   text: string;
 }
