@@ -18,29 +18,24 @@ export class ChatOverviewComponent {
 
   constructor(private chatService: ChatService) {}
 
-  sendMessage() {
+sendMessage() {
+  if (!this.currentInput.trim()) return;
 
-    this.chatService.sendMessage(this.currentInput);
+  // Push user message
+  this.messages.push({
+    sender: 'left',
+    answer: this.currentInput
+  });
 
-    /*
-    if (!this.currentInput.trim()) return;
+  const input = this.currentInput;
+  this.currentInput = '';
 
-    // Push user message
+  this.chatService.sendMessage(input).subscribe((replyMessage: Message) => {
+    console.log('In compoenent, received reply:', replyMessage);
     this.messages.push({
-      sender: 'left',
-      text: this.currentInput
+      sender: 'right',
+      answer: replyMessage.answer
     });
-
-    this.currentInput = '';
-
-    // Optionally: simulate AI reply
-    setTimeout(() => {
-      this.messages.push({
-        sender: 'right',
-        text: 'Thanks for your question! 🍽️'
-      });
-    }, 800);
-  }
-    */
+  });
 }
 }

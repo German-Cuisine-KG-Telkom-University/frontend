@@ -15,11 +15,15 @@ export class ChatService {
   //header: string = 'application/json';
 
   sendMessage(content: string): Observable<Message> {
+    console.log('Sending message:', content);
     const headers = new HttpHeaders({
       "Content-Type": "application/json",
       "x-api-key": "germanfoodchatbot"
     });
-
+    
+    console.log(headers.keys()); 
+    console.log(headers.get('Content-Type'));
+    console.log(headers.get('x-api-key'));
     return this.http.post<Message>(
       baseUrl,
       { question: content },

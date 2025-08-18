@@ -26,7 +26,7 @@ export class ChatInputComponent {
     // Call API via service
     this.chatService.sendMessage(text).subscribe({
       next: (response) => {
-        this.sendMessage.emit(response.text); 
+        this.sendMessage.emit(response.answer); 
         console.log('Message sent successfully:', response);
         this.userInput = '';
       },
