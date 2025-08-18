@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Message } from '../../models/message';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,11 +16,29 @@ export class ChatOverviewComponent {
   @Input() messages: Message[] = [];
   currentInput: string = '';
   loading: boolean = false;
-
+  @ViewChild('scrollMe') private myScrollContainer!: ElementRef;
   constructor(private chatService: ChatService) {}
+
+   ngAfterViewInit() {
+    this.scrollToBottom();
+  }
+
+   private scrollToBottom(): void {
+    setTimeout(() => {
+      try {
+        this.myScrollContainer.nativeElement.scrollTo({
+          top: this.myScrollContainer.nativeElement.scrollHeight,
+          behavior: 'smooth'
+        });
+      } catch(err) {
+        console.warn('Scroll failed:', err);
+      }
+    }, 50);
+  }
 
 sendMessage() {
   if (!this.currentInput.trim()) return;
+  this.scrollToBottom()
 
   // Push user message
   this.messages.push({
@@ -39,7 +57,8 @@ this.chatService.sendMessage(input).subscribe({
           sender: 'right',
           answer: replyMessage.answer
         });
-        this.loading = false;   
+        this.loading = false;
+        this.scrollToBottom();   
       },
       error: () => {
         this.loading = false;   

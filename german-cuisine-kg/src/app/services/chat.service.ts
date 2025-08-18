@@ -21,9 +21,7 @@ export class ChatService {
       "x-api-key": "germanfoodchatbot"
     });
     
-    console.log(headers.keys()); 
-    console.log(headers.get('Content-Type'));
-    console.log(headers.get('x-api-key'));
+    
     return this.http.post<Message>(
       baseUrl,
       { question: content },

@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Message } from './models/message';
-import { ChatInputComponent } from "./components/chat-input/chat-input.component";
 import { ChatOverviewComponent } from "./components/chat-overview/chat-overview.component";
 import { ChatService } from './services/chat.service';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ChatInputComponent, ChatOverviewComponent],
+  imports: [RouterOutlet, ChatOverviewComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

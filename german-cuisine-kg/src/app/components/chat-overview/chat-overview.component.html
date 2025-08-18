@@ -1,11 +1,9 @@
 <section class="msger">
-  
-  
-
-  <main class="msger-chat">
+  <main #scrollMe class="msger-chat">
      <div class="title-container">
         <h1 class="page-title">German Food KG _live</h1>
     </div>
+    <div class="messages-container">
     <div *ngFor="let msg of messages" class="msg" [ngClass]="msg.sender + '-msg'">
       <div class="msg-bubble">
         <div class="msg-info">
@@ -17,9 +15,10 @@
       </div>
     </div>
     <app-reponse-loader *ngIf="loading"></app-reponse-loader>
+    </div>
   </main>
 
-    <!-- Input form -->
+  <!-- Input form -->
   <form class="msger-inputarea" (ngSubmit)="sendMessage()">
     <input 
       type="text" 
