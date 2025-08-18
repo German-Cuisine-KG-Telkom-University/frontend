@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ChatService } from '../../services/chat.service';
 
 @Component({
   selector: 'app-chat-overview',
@@ -15,7 +16,13 @@ export class ChatOverviewComponent {
   @Input() messages: Message[] = [];
   currentInput: string = '';
 
+  constructor(private chatService: ChatService) {}
+
   sendMessage() {
+
+    this.chatService.sendMessage(this.currentInput);
+
+    /*
     if (!this.currentInput.trim()) return;
 
     // Push user message
@@ -24,7 +31,6 @@ export class ChatOverviewComponent {
       text: this.currentInput
     });
 
-    // Clear input field
     this.currentInput = '';
 
     // Optionally: simulate AI reply
@@ -35,4 +41,6 @@ export class ChatOverviewComponent {
       });
     }, 800);
   }
+    */
+}
 }
