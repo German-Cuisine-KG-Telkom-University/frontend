@@ -95,6 +95,8 @@ body {
   display: flex;
   align-items: flex-end;
   margin-bottom: 10px;
+  white-space: pre-wrap;   /* preserves \n as real line breaks */
+  word-wrap: break-word;   /* wrap long words */
 }
 .msg:last-of-type {
   margin: 0;
