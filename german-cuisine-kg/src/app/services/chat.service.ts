@@ -18,7 +18,7 @@ export class ChatService {
     console.log('Sending message:', content);
     const headers = new HttpHeaders({
       "Content-Type": "application/json",
-      "x-api-key": "germanfoodchatbot"
+      "x-api-key": "bigdatalabfoodkg"
     });
     
     

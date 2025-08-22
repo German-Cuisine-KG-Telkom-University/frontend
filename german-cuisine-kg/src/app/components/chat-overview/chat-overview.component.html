@@ -1,14 +1,14 @@
 <section class="msger">
   <main #scrollMe class="msger-chat">
      <div class="title-container">
-        <h1 class="page-title">German Food KG _live</h1>
+        <h1 class="page-title">German Food Q&A</h1>
     </div>
     <div class="messages-container">
     <div *ngFor="let msg of messages" class="msg" [ngClass]="msg.sender + '-msg'">
       <div class="msg-bubble">
         <div class="msg-info">
           <div class="msg-info-name">
-            {{ msg.sender === 'left' ? 'User' : 'Cuisine Expert' }}
+            {{ msg.sender === 'left' ? 'User' : 'Cuisine Expert 👨‍🍳' }}
           </div>
         </div>
         <div class="msg-text">{{ msg.answer }}</div>
