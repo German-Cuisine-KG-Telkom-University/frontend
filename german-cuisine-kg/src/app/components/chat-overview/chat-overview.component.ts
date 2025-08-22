@@ -13,6 +13,20 @@ import { ReponseLoaderComponent } from '../reponse-loader/reponse-loader.compone
   imports: [CommonModule, FormsModule, ReponseLoaderComponent]
 })
 export class ChatOverviewComponent {
+  showTable: boolean = false;
+
+  exampleQueries: string[] = [
+    '1. What german dessert that have a type of any fruit as one of ingredient?',
+    '2. Find all beverages that are non alcoholic, carbonated, and is not a juice or coffee',
+    '3. Find all vegetarian main courses from Bavaria that do not contain spinach',
+    '4. I want to eat chicken or beef for breakfast, where can i get them',
+    '5. What are sweet dishes i can eat for dinner',
+  ];
+
+
+ 
+
+
   @Input() messages: Message[] = [];
   currentInput: string = '';
   loading: boolean = false;
@@ -36,11 +50,15 @@ export class ChatOverviewComponent {
     }, 50);
   }
 
+   toggleTable() {
+    this.showTable = !this.showTable;
+  }
+
 sendMessage() {
   if (!this.currentInput.trim()) return;
   this.scrollToBottom()
 
-  // Push user message
+  
   this.messages.push({
     sender: 'left',
     answer: this.currentInput

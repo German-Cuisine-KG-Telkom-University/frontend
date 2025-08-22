@@ -18,8 +18,14 @@
     </div>
   </main>
 
+
+   <div class="examples-btn-container">
+    <button type="button" (click)="toggleTable()" class="examples-btn">Examples</button>
+  </div>
+
   <!-- Input form -->
   <form class="msger-inputarea" (ngSubmit)="sendMessage()">
+    
     <input 
       type="text" 
       class="msger-input" 
@@ -28,5 +34,27 @@
       name="messageInput"
     >
     <button type="submit" class="msger-send-btn">Send</button>
+    <div class="popup" *ngIf="showTable">
+  <div class="popup-content">
+    <span class="close-btn" (click)="toggleTable()">&times;</span>
+    <h3>💡 Example Queries</h3>
+    <table class="example-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Query</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of exampleQueries; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ row }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
   </form>
 </section>
